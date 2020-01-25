@@ -1,0 +1,25 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+      <a href="#" class="brand-logo">Schooll</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+        {{#if isHome}}
+            <li class="active"><a href="/">Home</a></li>
+        {{else}}
+            <li><a href="/">Home</a></li>
+        {{/if}}
+
+        {{#if isLessons}}
+            <li class="active"><a href="/lessons">Lessons</a></li>
+        {{else}}
+            <li><a href="/lessons">Lessons</a></li>
+        {{/if}}
+
+        {{#if isAdd}}
+        <li class="active"><a href="/add">Add lesson</a></li>
+        {{else}}
+        <li><a href="/add">Add lesson</a></li>
+        {{/if}}
+      </ul>
+    </div>
+</nav>
