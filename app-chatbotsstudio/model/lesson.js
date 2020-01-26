@@ -25,6 +25,27 @@ class Lesson {
         }
     }
 
+    static async update(lesson) {
+        const lessons = await Lesson.getAll()
+
+        const idx = courses.findIndex(c => c.id === lesson.id)
+        lessons[idx] = lesson
+
+        return new Promise((resolve, reject) => {
+            fs.writeFile(
+                path.join(__dirname, '..', 'data', 'lessons.json'),
+                JSON.stringify(lessons),
+                (err) => {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve()
+                    }
+                }
+            )
+        })
+    }
+
     async save() {
         const lessons = await Lesson.getAll()
         lessons.push(this.toJSON())
@@ -60,6 +81,11 @@ class Lesson {
             )
         })
 
+    }
+
+    static async getById(id) {
+        const lesson = await Lesson.getAll()
+        return lesson.find(c => c.id === id)
     }
 }
 

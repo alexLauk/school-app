@@ -1,35 +1,37 @@
-<h1>Add lesson</h1>
+<h1>Edit {{lesson.topic}}</h1>
 
-<form action="/add" method="POST">
+<form action="lessons/edit" method="POST">
     <div class="input-field">
-        <input id="topic" name="topic" type="text" class="validate" required>
+        <input id="topic" name="topic" type="text" class="validate" required value="{{lesson.topic}}">
         <label for="topic">Lesson topic</label>
         <span class="helper-text" data-error="Enter lesson topic" data-success="right"></span>
     </div>
     <div class="input-field">
-        <input id="teacher" name="teacher" type="text" class="validate" required>
+        <input id="teacher" name="teacher" type="text" class="validate" required value="{{lesson.teacher}}">
         <label for="teacher">Teacher name</label>
         <span class="helper-text" data-error="Enter teacher name" data-success="right"></span>
     </div>
     <div class="input-field">
-        <input id="group" name="group" type="text" class="validate" required>
+        <input id="group" name="group" type="text" class="validate" required value="{{lesson.group}}">
         <label for="group">Group</label>
         <span class="helper-text" data-error="Enter group" data-success="right"></span>
     </div>
     <div class="input-field">
-        <input id="classroom" name="classroom" type="number" class="validate" required>
+        <input id="classroom" name="classroom" type="number" class="validate" required value="{{lesson.classroom}}">
         <label for="classroom">Classroom</label>
         <span class="helper-text" data-error="Enter classroom" data-success="right"></span>
     </div>
     <div class="input-field">
-        <input id="dateStart" name="dateStart" type="date" class="validate" required>
+        <input id="dateStart" name="dateStart" type="date" class="validate" required value="{{lesson.dateStart}}">
         <label for="dateStart">Start date of the lesson</label>
         <span class="helper-text" data-error="Enter start date of the lesson" data-success="right"></span>
     </div>
     <div class="input-field">
-        <input id="dateEnd" name="dateEnd" type="date" class="validate" required>
+        <input id="dateEnd" name="dateEnd" type="date" class="validate" required value="{{lesson.dateEnd}}">
         <label for="dateEnd">End date of the lesson</label>
         <span class="helper-text" data-error="Enter end date of the lesson" data-success="right"></span>
     </div>
-    <button class="btn btn-primary">Add Lesson</button>
+
+    <input type="hidden" name="id" value="{{lesson.id}}">
+    <button class="btn btn-primary">Edit Lesson</button>
 </form>

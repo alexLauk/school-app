@@ -1,1 +1,45 @@
-<h1>Lessons</h1>
+<h3>Lessons</h3>
+
+<div class="row">
+    <div class="col s10">
+        <table class="highlight centered">
+            <thead>
+                <tr>
+                    <th>Lesson topic</th>
+                    <th>Teacher name</th>
+                    <th>Group</th>
+                    <th>Classroom</th>
+                    <th>Start date of the lesson</th>
+                    <th>End date of the lesson</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#if lessons.length}}
+            {{#each lessons}}
+            <tr>
+                <td>{{topic}}</td>
+                <td>{{teacher}}</td>
+                <td>{{group}}</td>
+                <td>{{classroom}}</td>
+                <td>{{dateStart}}</td>
+                <td>{{dateEnd}}</td>
+                <td><a href="/lessons/{{id}}/edit?allow=true" class="waves-effect waves-teal btn-flat"><i class="material-icons center">edit</i></a></td>
+                <td><a class="waves-effect waves-teal btn-flat"><i class="material-icons center">delete</i></a></td>
+            </tr>
+            {{/each}}
+            {{else}}
+            <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            {{/if}}
+            </tbody>
+        </table>
+
+    </div>
+</div>
