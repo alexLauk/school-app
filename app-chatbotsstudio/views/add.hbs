@@ -6,28 +6,10 @@
         <label for="topic">Lesson topic</label>
         <span class="helper-text" data-error="Enter lesson topic" data-success="right"></span>
     </div>
-    {{#if teachers.length}}
-     {{#each teachers}}
-        <select multiple name="teacher">
-
-            {{!-- <input id="teacher" name="teacher" type="text" class="validate" required>
-            <label for="teacher">Teacher name</label>
-            <span class="helper-text" data-error="Enter teacher name" data-success="right"></span> --}}
-            <option value={{teachers.teacher}}>{{teachers.teacher}}</option>
-
-        </select>
-    {{/each}}
     <div class="input-field">
         <input id="teacher" name="teacher" type="text" class="validate" required>
         <label for="teacher">Teacher name</label>
         <span class="helper-text" data-error="Enter teacher name" data-success="right"></span>
-    </div>
-    <div>
-        {{else}}
-            <input id="teacher" name="teacher" type="text" class="validate" required>
-            <label for="teacher">Teacher name</label>
-            <span class="helper-text" data-error="Enter teacher name" data-success="right"></span>
-        {{/if}}
     </div>
     <div class="input-field">
         <input id="group" name="group" type="text" class="validate" required>
