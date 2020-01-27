@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars')
 
 const homeRoutes = require('./routes/home');
 const addRoutes = require('./routes/add');
+const teacherRoutes = require('./routes/teacher');
 const lessonsRoutes = require('./routes/lessons');
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(express.urlencoded({extended: true}))
 app.use('/', homeRoutes);
 app.use('/add', addRoutes);
 app.use('/lessons', lessonsRoutes);
+app.use('/teacher', teacherRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

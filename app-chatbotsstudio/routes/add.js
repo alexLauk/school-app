@@ -1,12 +1,16 @@
 const {Router} = require('express');
 const router = Router();
 const Lesson = require('../model/lesson')
+const Teacher = require('../model/teacher')
 
 /* get lesson */
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const teachers = await Teacher.getAll()
+  console.log(teachers)
   res.render('add', {
     title: 'Add lesson',
-    isAdd: true
+    isAdd: true,
+    teachers
   })
 });
 
@@ -22,7 +26,13 @@ router.post('/', async (req, res) => {
 
   await lesson.save()
 
+  const teacher = new Teacher(
+    req.body.topic,
+    req.body.teacher,
+    req.body.group,
+    req.body.classroom)
 
+  await teacher.save()
 
   res.redirect('/lessons')
 })

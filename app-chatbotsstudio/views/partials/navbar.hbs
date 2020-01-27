@@ -20,6 +20,12 @@
         {{else}}
         <li><a href="/add">Add lesson</a></li>
         {{/if}}
+
+        {{#if isTeacher}}
+        <li class="active"><a href="/teacher">Teacher</a></li>
+        {{else}}
+        <li><a href="/teacher">Teacher</a></li>
+        {{/if}}
       </ul>
     </div>
 </nav>

@@ -18,7 +18,7 @@ router.get('/:id/edit', async (req, res) => {
     }
 
     const lesson = await Lesson.getById(req.params.id)
-    res.render('lesson/edit', {
+    res.render('edit', {
         title: `Edit ${lesson.topic}`,
         lesson
     })
