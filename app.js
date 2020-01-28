@@ -32,12 +32,6 @@ app.use('/add', addRoutes);
 app.use('/lessons', lessonsRoutes);
 app.use('/teacher', teacherRoutes);
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  next(createError(404));
-});
-
-
 const PORT = process.env.PORT || 3000;
 
 async function start() {

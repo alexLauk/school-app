@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const router = Router();
-const Lesson = require('../model/lesson1')
+const Lesson = require('../model/lesson')
 const Teacher = require('../model/teacher')
 
 /* get lesson */
@@ -18,12 +18,14 @@ router.post('/', async (req, res) => {
 
   const lesson = new Lesson({
     topic: req.body.topic,
-    teacher: req.body.teacher,
+    teacherName: req.body.teacherName,
     group: req.body.group,
-    classromm: req.body.classroom,
+    classroom: req.body.classroom,
     dateStart: req.body.dateStart,
     dateEnd: req.body.dateEnd
   })
+
+  console.log(lesson)
 
   try {
     await lesson.save()

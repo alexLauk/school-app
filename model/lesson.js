@@ -5,8 +5,8 @@ const lesson = new Schema({
         type: String,
         require: true
     },
-    teacher: {
-        type: Number,
+    teacherName: {
+        type: String,
         require: true
     },
     group: {

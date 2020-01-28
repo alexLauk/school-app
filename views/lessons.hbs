@@ -19,13 +19,13 @@
             {{#each lessons}}
             <tr>
                 <td>{{topic}}</td>
-                <td>{{teacher}}</td>
+                <td>{{teacherName}}</td>
                 <td>{{group}}</td>
                 <td>{{classroom}}</td>
                 <td>{{dateStart}}</td>
                 <td>{{dateEnd}}</td>
                 <td><a href="/lessons/{{id}}/edit?allow=true" class="waves-effect waves-teal btn-flat"><i class="material-icons center">edit</i></a></td>
-                <td><a class="waves-effect waves-teal btn-flat"><i class="material-icons center">delete</i></a></td>
+                <td><a href="/lessons/{{id}}/remove" class="waves-effect waves-red btn-flat"><i class="material-icons center">delete</i></a></td>
             </tr>
             {{/each}}
             {{else}}

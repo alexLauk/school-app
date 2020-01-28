@@ -9,9 +9,9 @@ const p = path.join(
     'teachers.json'
 )
 class Teacher {
-    constructor (topic, teacher, group, classroom) {
+    constructor (topic, teacherName, group, classroom) {
         this.topic = topic
-        this.teacher = teacher
+        this.teacherName = teacherName
         this.group = group
         this.classroom = classroom
         this.id = uuid()

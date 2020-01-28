@@ -1,10 +1,10 @@
 const {Router} = require('express');
-const Lesson = require('../model/lesson1')
+const Lesson = require('../model/lesson')
 const router = Router();
 
 /* GET lessons listing. */
-router.get('/', async (req, res, next) => {
-    const lessons = await Lesson.getAll()
+router.get('/', async (req, res) => {
+    const lessons = await Lesson.find()
     res.render('lessons', {
         title: 'Lessons',
         isLessons: true,
@@ -17,7 +17,7 @@ router.get('/:id/edit', async (req, res) => {
        return res.redirect('/')
     }
 
-    const lesson = await Lesson.getById(req.params.id)
+    const lesson = await Lesson.findById(req.params.id)
     res.render('edit', {
         title: `Edit ${lesson.topic}`,
         lesson
@@ -25,8 +25,20 @@ router.get('/:id/edit', async (req, res) => {
 })
 
 router.post('/edit', async (req, res) => {
-    await Lesson.update(req.body)
+    const {id} = req.body
+    delete req.body.id
+    await Lesson.findByIdAndUpdate(id, req.body)
     res.redirect('/lessons')
+})
+
+
+router.get('/:id/remove', async (req, res) => {
+    try {
+        await Lesson.deleteOne({_id: req.params.id})
+        res.redirect('/lessons')
+    } catch (e){
+        console.log(e)
+    }
 })
 
 /* router.get('/:id', (req, res) => {
