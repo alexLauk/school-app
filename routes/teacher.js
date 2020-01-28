@@ -10,7 +10,7 @@ const Teacher = require('../model/teacher')
 }) */
 
 router.get('/', async (req,res) => {
-    const teacher = await Teacher.fetch()
+    const teacher = await Teacher.getAll()
     res.render('teacher', {
         title: 'Teacher',
         isTeacher: true,

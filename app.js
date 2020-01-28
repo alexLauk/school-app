@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars')
@@ -39,10 +40,23 @@ app.use((req, res, next) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running ${PORT}`)
-  });
+async function start() {
+  try {
+    const url = `mongodb+srv://Alex:cBc8m7W96Z3zptfh@cluster0-j9ohx.mongodb.net/school`
+    await mongoose.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false
+    })
+    app.listen(PORT, () => {
+      console.log(`Server is running ${PORT}`)
+    });
 
+  } catch (e) {
+    console.log(e)
+  }
+}
 
+start()
 
 module.exports = app;
