@@ -5,6 +5,9 @@ const router = Router();
 /* GET lessons listing. */
 router.get('/', async (req, res) => {
     const lessons = await Lesson.find()
+        .populate('teacherId','name')
+        .select('topic group, classroom, dateStart dateEnd')
+
     res.render('lessons', {
         title: 'Lessons',
         isLessons: true,

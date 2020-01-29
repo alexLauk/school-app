@@ -1,20 +1,24 @@
 const {Schema, model} = require('mongoose')
 
-const teacherSchema = new Schema({
-    email: {
+const groupSchema = new Schema({
+    kodGroup: {
         type: String,
         require: true
     },
-    name: {
-        type: String,
+    countStudent: {
+        type: Number,
         require: true
     },
-    lesson: {
+    yearStart: {
+        type: Date,
+        require: true
+    },
+    student: {
         items: [
             {
-                lessonId: {
+                satudentId: {
                     type: Schema.Types.ObjectId,
-                    ref: 'Lesson',
+                    ref: 'Student',
                     require: true
                 }
             }
@@ -22,4 +26,4 @@ const teacherSchema = new Schema({
     }
 })
 
-module.exports = model('Teacher', teacherSchema)
+module.exports = model('Group', groupSchema)

@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose')
 
-const teacherSchema = new Schema({
+const studentSchema = new Schema({
     email: {
         type: String,
         require: true
@@ -20,6 +20,10 @@ const teacherSchema = new Schema({
             }
         ]
     }
+    ,groupId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Group'
+    },
 })
 
-module.exports = model('Teacher', teacherSchema)
+module.exports = model('Student', studentSchema)

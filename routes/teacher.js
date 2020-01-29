@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const router = Router()
-const Teacher = require('../model/teacher')
+const Teacher = require('../model/teacher1')
 // const Lessons = require('../model/lesson')
 
 /* router.post('/add', async (req, res) => {

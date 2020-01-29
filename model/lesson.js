@@ -5,13 +5,13 @@ const lesson = new Schema({
         type: String,
         require: true
     },
-    teacherName: {
-        type: String,
-        require: true
+    teacherId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Teacher'
     },
-    group: {
-        type: String,
-        require: true
+    groupId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Group'
     },
     classroom: Number,
     dateStart: Date,

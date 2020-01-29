@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars')
+const Teacher = require('./model/teacher')
 
 const homeRoutes = require('./routes/home');
 const addRoutes = require('./routes/add');
@@ -24,6 +25,16 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
+app.use( async (req, res, next) => {
+  try {
+    const teacher = await Teacher.findById('')
+    req.teacher = teacher
+  } catch (e) {
+    console.log(e)
+  }
+
+})
+
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}))
 
@@ -31,6 +42,8 @@ app.use('/', homeRoutes);
 app.use('/add', addRoutes);
 app.use('/lessons', lessonsRoutes);
 app.use('/teacher', teacherRoutes);
+
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -42,6 +55,17 @@ async function start() {
       useUnifiedTopology: true,
       useFindAndModify: false
     })
+
+    const candidate = await User.findOne()
+    if (!candidate) {
+      const teacher = new Teacher({
+        email: 'teacher_school@gmail.com',
+        name: 'Fernando Johnson',
+        lesson: {items: []}
+      })
+
+      await teacher.save();
+    }
     app.listen(PORT, () => {
       console.log(`Server is running ${PORT}`)
     });

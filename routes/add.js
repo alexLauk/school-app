@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const router = Router();
 const Lesson = require('../model/lesson')
-const Teacher = require('../model/teacher')
+const Teacher = require('../model/teacher1')
 
 /* get lesson */
 router.get('/', async (req, res) => {
@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
 
   const lesson = new Lesson({
     topic: req.body.topic,
+    teacherId: req.teacher,
     teacherName: req.body.teacherName,
     group: req.body.group,
     classroom: req.body.classroom,
