@@ -5,6 +5,17 @@ const lesson = new Schema({
         type: String,
         require: true
     },
+    student: {
+        items: [
+            {
+                studentId: {
+                    type: Schema.Types.ObjectId,
+                    ref: 'Student',
+                    require: true
+                }
+            }
+        ]
+    },
     teacherId: {
         type: Schema.Types.ObjectId,
         ref: 'Teacher'

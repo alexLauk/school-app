@@ -5,8 +5,10 @@ const router = Router();
 /* GET lessons listing. */
 router.get('/', async (req, res) => {
     const lessons = await Lesson.find()
-        .populate('teacherId','name')
-        .select('topic group, classroom, dateStart dateEnd')
+        //.populate('student')
+        // .select('topic classroom dateStart dateEnd')
+
+    console.log(lessons)
 
     res.render('lessons', {
         title: 'Lessons',

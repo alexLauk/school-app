@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars')
-const Teacher = require('./model/teacher')
+const Student = require('./model/student')
 
 const homeRoutes = require('./routes/home');
 const addRoutes = require('./routes/add');
@@ -27,12 +27,13 @@ app.set('views', 'views');
 
 app.use( async (req, res, next) => {
   try {
-    const teacher = await Teacher.findById('')
-    req.teacher = teacher
+    const student = await Student.findById('5e31e7a11c9d44000019a51c')
+    req.student = student
+    console.log(student)
+    next()
   } catch (e) {
     console.log(e)
   }
-
 })
 
 app.use(express.static('public'));
@@ -56,16 +57,17 @@ async function start() {
       useFindAndModify: false
     })
 
-    const candidate = await User.findOne()
+    /* const candidate = await Student.findOne()
     if (!candidate) {
-      const teacher = new Teacher({
-        email: 'teacher_school@gmail.com',
+      const student = new Student({
+        email: 'student1_school@gmail.com',
         name: 'Fernando Johnson',
-        lesson: {items: []}
+        lesson: {items: []},
+        groupId: new Object("21K")
       })
 
-      await teacher.save();
-    }
+      await student.save();
+    } */
     app.listen(PORT, () => {
       console.log(`Server is running ${PORT}`)
     });
